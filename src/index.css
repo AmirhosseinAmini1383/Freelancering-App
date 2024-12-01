@@ -53,6 +53,42 @@
   }
 }
 
+@layer components {
+  .textField__input {
+    @apply w-full py-3 px-4 rounded-xl text-secondary-900 border border-gray-300 outline-none hover:border-primary-500 focus:border-primary-500 focus:bg-white transition-all duration-300 ease-out focus:shadow-lg focus:shadow-primary-200;
+  }
+  .btn {
+    @apply px-4 py-3 font-bold rounded-xl transition-all duration-300;
+  }
+  .btn--primary {
+    @apply bg-primary-900 text-secondary-50 hover:bg-primary-800 shadow-lg shadow-primary-300;
+  }
+  .btn--secondary {
+    @apply bg-secondary-600 text-secondary-100;
+  }
+  .btn--outline {
+    @apply border border-secondary-700 text-secondary-700;
+  }
+  .btn--danger {
+    @apply border border-rose-700 text-rose-700;
+  }
+  .badge {
+    @apply inline-block whitespace-nowrap rounded-xl px-2 py-0.5;
+  }
+  .badge--primary {
+    @apply bg-primary-900 text-white;
+  }
+  .badge--secondary {
+    @apply bg-secondary-200 text-secondary-600;
+  }
+  .badge--success {
+    @apply bg-green-500 text-white;
+  }
+  .badge--danger {
+    @apply bg-red-500 text-white;
+  }
+}
+
 html,
 body {
   padding: 0;
@@ -81,6 +117,10 @@ button:disabled {
   background-color: rgb(var(--color-secondary-100), 0.5);
   pointer-events: none;
   box-shadow: none;
+}
+
+label {
+  display: block;
 }
 
 /* inupt number */
