@@ -119,10 +119,6 @@ button:disabled {
   box-shadow: none;
 }
 
-label {
-  display: block;
-}
-
 /* inupt number */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
