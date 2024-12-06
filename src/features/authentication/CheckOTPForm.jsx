@@ -5,9 +5,10 @@ import { checkOtp } from "../../services/authService";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { HiArrowRight, HiRefresh } from "react-icons/hi";
+import { CiEdit } from "react-icons/ci";
 
 const RESEND_TIME = 90;
-function CheckOTPForm({ phoneNumber, onBack, onReSendOtp }) {
+function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, otpResponse }) {
   const [otp, setOtp] = useState("");
   const [time, setTime] = useState(RESEND_TIME);
   const navigate = useNavigate();
@@ -46,12 +47,20 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp }) {
   return (
     <div>
       <button onClick={onBack}>
-        <HiArrowRight className="w-6 h-6 text-secondary-500" />
+        <HiArrowRight className="w-6 h-6 text-secondary-500 mb-2" />
       </button>
       <form onSubmit={checkOtpHandler}>
-        <p className="font-bold text-secondary-800 mb-10">
+        <p className="font-bold text-secondary-800 mb-3">
           کد تایید را وارد کنید
         </p>
+        {otpResponse && (
+          <p className="mb-8 text-secondary-500 flex items-center gap-x-1 text-sm">
+            <span>{otpResponse?.message}</span>
+            <button onClick={onBack}>
+              <CiEdit className="w-5 h-5 text-primary-900" />
+            </button>
+          </p>
+        )}
         <OTPInput
           value={otp}
           onChange={setOtp}
@@ -64,20 +73,16 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp }) {
             padding: "0.5rem",
             border: "1px solid rgb(var(--color-primary-400))",
             borderRadius: "0.5rem",
-            marginBottom: "1rem",
           }}
         />
-        <div className="mb-10 text-secondary-500 text-sm">
+        <div className="mt-4 mb-10 text-secondary-500 text-sm">
           {time > 0 ? (
             <p>{time} ثانیه تا ارسال مجدد کد</p>
           ) : (
-            <button
-              onClick={onReSendOtp}
-              className="flex items-center justify-between gap-x-1"
-            >
+            <button onClick={onReSendOtp} className="flex items-center gap-x-1">
               <span>ارسال مجدد کد تایید</span>
               <span>
-                <HiRefresh />
+                <HiRefresh className="w-4 h-4 text-primary-900" />
               </span>
             </button>
           )}
