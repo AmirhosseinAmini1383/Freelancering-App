@@ -12,7 +12,6 @@ function AuthContainer() {
   const {
     isPending: isSendingOtp,
     data: otpResponse,
-    error,
     mutateAsync,
   } = useMutation({
     mutationFn: getOtp,
