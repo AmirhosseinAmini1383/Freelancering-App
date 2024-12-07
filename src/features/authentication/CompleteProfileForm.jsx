@@ -5,12 +5,13 @@ import { useMutation } from "@tanstack/react-query";
 import { completeProfile } from "../../services/authService";
 import toast from "react-hot-toast";
 import Loading from "../../ui/Loading";
+import { useNavigate } from "react-router-dom";
 
 function CompleteProfileForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [role, setRole] = useState("");
-
+  const navigate = useNavigate();
   const { isPending, mutateAsync } = useMutation({
     mutationFn: completeProfile,
   });
@@ -19,9 +20,16 @@ function CompleteProfileForm() {
     try {
       const { message, user } = await mutateAsync({ name, email, role });
       toast.success(message);
-      // role => push to profile !!
-      // status => 0 , 1 , 2 ??
-      // check user status to push to profile or not
+
+      if (user.status !== 2) {
+        navigate("/");
+        toast("پروفایل شما در انتظار تایید است", {
+          icon: "ℹ️",
+        });
+        return;
+      }
+      if (user.role === "OWNER") return navigate("/owner");
+      if (user.role === "FREELANCER") return navigate("/freelancer");
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
@@ -49,7 +57,6 @@ function CompleteProfileForm() {
               id="OWNER"
               value="OWNER"
               label="کارفرما"
-              htmlFor="OWNER"
               onChange={(e) => setRole(e.target.value)}
               checked={role === "OWNER"}
             />
@@ -58,7 +65,6 @@ function CompleteProfileForm() {
               id="FREELANCER"
               value="FREELANCER"
               label="فریلنسر"
-              htmlFor="FREELANCER"
               onChange={(e) => setRole(e.target.value)}
               checked={role === "FREELANCER"}
             />
