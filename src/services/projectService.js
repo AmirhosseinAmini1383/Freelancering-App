@@ -1,5 +1,6 @@
+import { data } from "autoprefixer";
 import http from "./httpService";
 
 export function getOwnerProjectsApi() {
-  return http.get("/project/owner-projects").then((data) => data.data);
+  return http.get("/project/owner-projects").then(({ data }) => data.data);
 }
