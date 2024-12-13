@@ -19,10 +19,10 @@ function CreateProjectForm() {
           register={register}
           required
           validationSchema={{
-            required: "عنوان پروژه را وارد کنید",
+            required: "عنوان پروژه ضروری است",
             minLength: {
-              value: 5,
-              message: "طول عنوان پروژه باید حداقل ۵ کاراکتر باشد",
+              value: 10,
+              message: "حداقل ۱۰ کاراکتر را وارد کنید",
             },
           }}
           errors={errors}
@@ -34,10 +34,10 @@ function CreateProjectForm() {
           register={register}
           required
           validationSchema={{
-            required: "توضیحات پروژه را وارد کنید",
+            required: "توضیحات پروژه ضروری است",
             minLength: {
               value: 15,
-              message: "طول توضیحات پروژه باید حداقل ۱۵ کاراکتر باشد",
+              message: "حداقل ۱۵ کاراکتر را وارد کنید",
             },
           }}
           errors={errors}
@@ -50,7 +50,7 @@ function CreateProjectForm() {
           type="number"
           required
           validationSchema={{
-            required: "بودجه پروژه را وارد کنید",
+            required: "بودجه پروژه ضروری است",
           }}
           errors={errors}
         />
