@@ -3,7 +3,7 @@ function RadioInput({
   id,
   value,
   register,
-  validationSchema,
+  validationSchema = {},
   watch,
   label,
 }) {

@@ -2,7 +2,7 @@ function TextField({
   label,
   name,
   register,
-  validationSchema,
+  validationSchema = {},
   type = "text",
   required,
   errors,

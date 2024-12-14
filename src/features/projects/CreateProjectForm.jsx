@@ -5,26 +5,42 @@ import RHFSelect from "../../ui/RHFSelect";
 import TagsInputField from "../../ui/TagsInput";
 import DatePickerField from "../../ui/DatePickerField";
 import useCategories from "../../hook/useCategories";
+import useCreateProject from "./useCreateProject";
+import Loading from "../../ui/Loading";
 
-function CreateProjectForm() {
+function CreateProjectForm({ onClose }) {
   const {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm();
 
   const [tags, setTags] = useState([]);
   const [date, setDate] = useState(new Date());
 
   const { categories } = useCategories();
+  const { isCreating, createProject } = useCreateProject();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    const newProject = {
+      ...data,
+      deadline: new Date(date).toISOString(),
+      tags,
+    };
+    createProject(newProject, {
+      onSuccess: () => {
+        onClose();
+        reset();
+      },
+    });
+  };
 
   return (
     <div>
       <form className="space-y-8" onSubmit={handleSubmit(onSubmit)}>
         <TextField
-          label="عنوان پروژه"
+          label="عنوان"
           name="title"
           register={register}
           required
@@ -39,7 +55,7 @@ function CreateProjectForm() {
         />
 
         <TextField
-          label="توضیحات پروژه"
+          label="توضیحات"
           name="description"
           register={register}
           required
@@ -54,7 +70,7 @@ function CreateProjectForm() {
         />
 
         <TextField
-          label="بودجه پروژه"
+          label="بودجه"
           name="budget"
           register={register}
           type="number"
@@ -76,9 +92,15 @@ function CreateProjectForm() {
 
         <DatePickerField date={date} setDate={setDate} label="ددلاین" />
 
-        <button type="submit" className="btn btn--primary w-full">
-          تایید
-        </button>
+        <div className="!mt-8 !mb-8">
+          {isCreating ? (
+            <Loading />
+          ) : (
+            <button type="submit" className="btn btn--primary w-full">
+              تایید
+            </button>
+          )}
+        </div>
       </form>
     </div>
   );

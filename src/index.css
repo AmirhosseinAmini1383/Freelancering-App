@@ -8,7 +8,7 @@
   :root {
     &,
     &.light-mode {
-      --background-app-rgb: 244, 245, 247;
+      --background-app-rgb: 249, 250, 251;
       --color-primary-900: 74, 109, 255;
       --color-primary-800: 92, 124, 255;
       --color-primary-700: 110, 138, 255;
@@ -60,7 +60,7 @@
   --rti-s: 0.5rem !important;
   --rti-tag: #edf2f7;
   --rti-tag-remove: #e53e3e;
-  border: 1px solid rgb(var(--color-primary-50)) !important ;
+  border: 1px solid rgb(var(--color-primary-100)) !important ;
   transition: all ease-out 0.3s;
 }
 
@@ -96,7 +96,7 @@
     @apply flex items-center gap-x-2 hover:bg-primary-100/50 hover:text-primary-900 px-2 py-1.5 rounded-lg transition-all duration-300;
   }
   .textField__input {
-    @apply w-full py-3 px-4 rounded-xl text-secondary-900 border border-primary-50 bg-secondary-100 outline-none hover:border-primary-500 focus:border-primary-500 focus:bg-secondary-50 transition-all duration-300 ease-out focus:shadow-lg focus:shadow-primary-200;
+    @apply w-full py-3 px-4 rounded-xl text-secondary-900 border border-primary-100 bg-secondary-100 hover:border-primary-500 focus:border-primary-500 focus:bg-secondary-50 transition-all duration-300 ease-out focus:shadow-lg focus:shadow-primary-200;
   }
   .btn {
     @apply px-4 py-3 font-bold rounded-xl transition-all duration-300;

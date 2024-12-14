@@ -11,10 +11,10 @@ import RadioInputGroup from "../../ui/RadioInputGroup";
 
 function CompleteProfileForm() {
   const {
+    formState: { errors },
     handleSubmit,
     register,
     watch,
-    formState: { errors },
   } = useForm();
 
   const navigate = useNavigate();
@@ -48,26 +48,28 @@ function CompleteProfileForm() {
             label={"نام و نام خانوادگی"}
             name={"name"}
             register={register}
-            validationSchema={{ require: "نام و نام خانوادگی ضروری است" }}
+            validationSchema={{ required: "نام و نام خانوادگی ضروری است" }}
             errors={errors}
+            required
           />
           <TextField
             label={"ایمیل"}
             name={"email"}
             register={register}
             validationSchema={{
-              require: "ایمیل ضروری است",
+              required: "ایمیل ضروری است",
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                 message: "ایمیل نامعتبر است",
               },
             }}
             errors={errors}
+            required
           />
           <RadioInputGroup
             configs={{
               name: "role",
-              validationSchema: { require: "انتخاب نقش ضروری است" },
+              validationSchema: { required: "انتخاب نقش ضروری است" },
               options: [
                 {
                   value: "OWNER",

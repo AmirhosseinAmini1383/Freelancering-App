@@ -12,7 +12,7 @@ function DatePickerField({ date, setDate, label }) {
         calendarPosition="bottom-center"
         value={date}
         onChange={(date) => setDate(date)}
-        format="YYYY/DD/MM"
+        format="YYYY/MM/DD"
         calendar={persian}
         locale={persian_fa}
       />
