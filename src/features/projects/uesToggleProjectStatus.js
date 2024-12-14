@@ -1,13 +1,12 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { editProjectApi } from "../../services/projectService";
-import { data } from "autoprefixer";
+import { toggleProjectStatusApi } from "../../services/projectService";
 import toast from "react-hot-toast";
 
-export default function useEditProject() {
+export default function uesToggleProjectStatus() {
   const queryClient = useQueryClient();
 
-  const { isPending: isEditing, mutate: editProject } = useMutation({
-    mutationFn: editProjectApi,
+  const { isPending: isUpdating, mutate: toggleProjectStatus } = useMutation({
+    mutationFn: toggleProjectStatusApi,
     onSuccess: (data) => {
       toast.success(data.message);
 
@@ -19,5 +18,5 @@ export default function useEditProject() {
     onError: (err) => toast.error(err?.response?.data?.message),
   });
 
-  return { isEditing, editProject };
+  return { isUpdating, toggleProjectStatus };
 }
