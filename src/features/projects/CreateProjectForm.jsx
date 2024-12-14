@@ -7,20 +7,44 @@ import DatePickerField from "../../ui/DatePickerField";
 import useCategories from "../../hook/useCategories";
 import useCreateProject from "./useCreateProject";
 import Loading from "../../ui/Loading";
+import useEditProject from "./useEditProject";
 
-function CreateProjectForm({ onClose }) {
+function CreateProjectForm({ onClose, projectToEdit = {} }) {
+  const { _id: editId } = projectToEdit;
+  const isEditSession = Boolean(editId);
+
+  const {
+    title,
+    description,
+    budget,
+    category,
+    deadline,
+    tags: prevTags,
+  } = projectToEdit;
+
+  let editValues = {};
+  if (isEditSession) {
+    editValues = {
+      title,
+      description,
+      budget,
+      category: category._id,
+    };
+  }
+
   const {
     register,
     formState: { errors },
     handleSubmit,
     reset,
-  } = useForm();
+  } = useForm({ defaultValues: editValues });
 
-  const [tags, setTags] = useState([]);
-  const [date, setDate] = useState(new Date());
+  const [tags, setTags] = useState(prevTags || []);
+  const [date, setDate] = useState(new Date(deadline || new Date()));
 
   const { categories } = useCategories();
   const { isCreating, createProject } = useCreateProject();
+  const { isEditing, editProject } = useEditProject();
 
   const onSubmit = (data) => {
     const newProject = {
@@ -28,12 +52,25 @@ function CreateProjectForm({ onClose }) {
       deadline: new Date(date).toISOString(),
       tags,
     };
-    createProject(newProject, {
-      onSuccess: () => {
-        onClose();
-        reset();
-      },
-    });
+
+    if (isEditSession) {
+      editProject(
+        { id: editId, newProject },
+        {
+          onSuccess: () => {
+            onClose();
+            reset();
+          },
+        }
+      );
+    } else {
+      createProject(newProject, {
+        onSuccess: () => {
+          onClose();
+          reset();
+        },
+      });
+    }
   };
 
   return (
