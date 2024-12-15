@@ -129,7 +129,7 @@ function CreateProjectForm({ onClose, projectToEdit = {} }) {
 
         <DatePickerField date={date} setDate={setDate} label="ددلاین" />
 
-        <div className="!mt-8 !mb-8">
+        <div className="!mt-8">
           {isCreating ? (
             <Loading />
           ) : (
