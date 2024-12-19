@@ -1,9 +1,10 @@
-import AppLayout from "../../ui/AppLayout";
-import Sidebar from "../../ui/Sidebar";
-import CustomNavLink from "../../ui/CustomNavLink";
 import { HiCollection, HiHome } from "react-icons/hi";
+import AppLayout from "../../ui/AppLayout";
+import CustomNavLink from "../../ui/CustomNavLink";
+import Sidebar from "../../ui/Sidebar";
+import { HiClipboardDocument } from "react-icons/hi2";
 
-function OwnerLayout() {
+function FreelancerLayout() {
   return (
     <AppLayout>
       <Sidebar>
@@ -15,9 +16,13 @@ function OwnerLayout() {
           <HiCollection />
           <span>پروژه ها</span>
         </CustomNavLink>
+        <CustomNavLink to="proposals">
+          <HiClipboardDocument />
+          <span>درخواست ها</span>
+        </CustomNavLink>
       </Sidebar>
     </AppLayout>
   );
 }
 
-export default OwnerLayout;
+export default FreelancerLayout;
