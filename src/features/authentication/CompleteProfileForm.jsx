@@ -89,7 +89,10 @@ function CompleteProfileForm() {
             {isPending ? (
               <Loading />
             ) : (
-              <button type="submit" className="btn btn--primary w-full">
+              <button
+                type="submit"
+                className="btn btn--primary w-full text-white"
+              >
                 تایید
               </button>
             )}

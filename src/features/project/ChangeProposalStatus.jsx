@@ -29,7 +29,7 @@ function ChangeProposalStatus({ proposalId, onClose }) {
 
   const onSubmit = (data) => {
     changeProposalStatus(
-      { id: proposalId, data },
+      { proposalId, projectId, ...data },
       {
         onSuccess: () => {
           onClose();
@@ -55,7 +55,10 @@ function ChangeProposalStatus({ proposalId, onClose }) {
           {isUpdating ? (
             <Loading />
           ) : (
-            <button type="submit" className="btn btn--primary w-full">
+            <button
+              type="submit"
+              className="btn btn--primary w-full text-white"
+            >
               تایید
             </button>
           )}

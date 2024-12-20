@@ -10,7 +10,7 @@ function SendOTPForm({ onSendOtp, isSendingOtp ,register}) {
           {isSendingOtp ? (
             <Loading />
           ) : (
-            <button type="submit" className="btn btn--primary w-full">
+            <button type="submit" className="btn btn--primary w-full text-white">
               ارسال کد تایید
             </button>
           )}

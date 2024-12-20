@@ -69,14 +69,15 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, otpResponse }) {
           value={otp}
           onChange={setOtp}
           numInputs={6}
-          renderSeparator={<span> - </span>}
+          renderSeparator={<span className="text-secondary-900"> - </span>}
           renderInput={(props) => <input type="number" {...props} />}
-          containerStyle="flex flex-row-reverse gap-x-2 items-center justify-between"
+          containerStyle="flex flex-row-reverse gap-x-2 items-center justify-between text-secondary-900"
           inputStyle={{
             width: "2.5rem",
             padding: "0.5rem",
             border: "1px solid rgb(var(--color-primary-400))",
             borderRadius: "0.5rem",
+            background: "rgb(var(--color-secondary-100))",
           }}
         />
         <div className="mt-4 mb-10 text-secondary-500 text-sm">
@@ -95,7 +96,10 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, otpResponse }) {
           {isPending ? (
             <Loading />
           ) : (
-            <button type="submit" className="btn btn--primary w-full">
+            <button
+              type="submit"
+              className="btn btn--primary w-full text-white"
+            >
               تایید
             </button>
           )}
