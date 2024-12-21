@@ -10,7 +10,7 @@ function UserAvatar() {
         alt="user-account"
         className="w-7 h-7 rounded-full object-cover object-center"
       />
-      <span>{user?.name}</span>
+      <span className="text-sm font-semibold">{user?.name}</span>
     </div>
   );
 }
