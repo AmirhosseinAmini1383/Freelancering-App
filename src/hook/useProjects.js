@@ -7,6 +7,9 @@ export default function useProjects() {
   const { search } = useLocation();
   const queryObject = queryString.parse(search);
 
+  // #2 Conver QueryString to QueryObject :
+  // const queryObject = Object.fromEntries(new URLSearchParams(search));
+
   const { data, isLoading } = useQuery({
     queryKey: ["projects", queryObject],
     queryFn: () => getProjectsApi(search),
