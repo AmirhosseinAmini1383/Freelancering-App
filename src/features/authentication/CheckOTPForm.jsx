@@ -8,6 +8,12 @@ import { HiArrowRight, HiRefresh } from "react-icons/hi";
 import { CiEdit } from "react-icons/ci";
 import Loading from "../../ui/Loading";
 
+const rolePaths = {
+  OWNER: "/owner",
+  FREELANCER: "/freelancer",
+  ADMIN: "/admin",
+};
+
 const RESEND_TIME = 90;
 function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, otpResponse }) {
   const [otp, setOtp] = useState("");
@@ -30,8 +36,8 @@ function CheckOTPForm({ phoneNumber, onBack, onReSendOtp, otpResponse }) {
         });
         return;
       }
-      if (user.role === "OWNER") return navigate("/owner");
-      if (user.role === "FREELANCER") return navigate("/freelancer");
+      const path = rolePaths[user.role];
+      if (path) return navigate(path); // => /freelancer , /admin , /owner
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }

@@ -1,9 +1,7 @@
-import {
-  HiOutlineViewGrid,
-  HiCurrencyDollar,
-  HiCollection,
-} from "react-icons/hi";
+import { HiOutlineViewGrid } from "react-icons/hi";
 import Stat from "../../ui/Stat";
+import { MdOutlineAssignmentTurnedIn } from "react-icons/md";
+import { HiClipboardDocument } from "react-icons/hi2";
 
 function Stats({ projects }) {
   const numOfProjects = projects.length;
@@ -27,13 +25,13 @@ function Stats({ projects }) {
         color="green"
         title="پروژه های واگذار شده"
         value={numOfAcceptedProjects}
-        icon={<HiCurrencyDollar className="w-20 h-20" />}
+        icon={<MdOutlineAssignmentTurnedIn className="w-20 h-20" />}
       />
       <Stat
         color="blue"
         title="درخواست ها"
         value={numOfProposals}
-        icon={<HiCollection className="w-20 h-20" />}
+        icon={<HiClipboardDocument className="w-20 h-20" />}
       />
     </div>
   );

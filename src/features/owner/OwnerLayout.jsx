@@ -1,7 +1,7 @@
 import AppLayout from "../../ui/AppLayout";
 import Sidebar from "../../ui/Sidebar";
 import CustomNavLink from "../../ui/CustomNavLink";
-import { HiCollection, HiHome } from "react-icons/hi";
+import { HiHome, HiViewGrid } from "react-icons/hi";
 
 function OwnerLayout() {
   return (
@@ -12,7 +12,7 @@ function OwnerLayout() {
           <span>خانه</span>
         </CustomNavLink>
         <CustomNavLink to="projects">
-          <HiCollection />
+          <HiViewGrid />
           <span>پروژه ها</span>
         </CustomNavLink>
       </Sidebar>
