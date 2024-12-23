@@ -1,4 +1,3 @@
-import { HiOutlineViewGrid } from "react-icons/hi";
 import { HiClipboardDocument } from "react-icons/hi2";
 import Stat from "../../ui/Stat";
 import { toPersianNumbersWithComma } from "../../utils/toPersianNumbers";
