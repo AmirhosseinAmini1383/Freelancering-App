@@ -8,6 +8,7 @@ const app = axios.create({
 });
 
 // request => err
+// For example, when the internet is down
 app.interceptors.request.use(
   (res) => res,
   (err) => Promise.reject(err)

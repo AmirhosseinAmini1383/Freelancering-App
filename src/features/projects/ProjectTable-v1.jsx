@@ -2,7 +2,10 @@ import Loading from "../../ui/Loading";
 
 import useOwnerProjects from "./useOwnerProjects";
 import truncateText from "../../utils/truncateText";
-import { toPersianNumbersWithComma } from "../../utils/toPersianNumbers";
+import {
+  toPersianNumbers,
+  toPersianNumbersWithComma,
+} from "../../utils/toPersianNumbers";
 import toLocalDateShort from "../../utils/toLocalDateShort";
 import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
 import Empty from "../../ui/Empty";
@@ -33,7 +36,7 @@ function ProjectTable_v1() {
         <tbody>
           {projects.map((project, index) => (
             <tr key={project._id}>
-              <td>{index + 1}</td>
+              <td>{toPersianNumbers(index + 1)}</td>
               <td>{truncateText(project.title, 30)}</td>
               <td>{project.category.title}</td>
               <td>{toPersianNumbersWithComma(project.budget)}</td>

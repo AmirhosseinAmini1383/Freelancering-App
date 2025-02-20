@@ -11,4 +11,3 @@ export default function useChangeUserStatus() {
 
   return { isUpdating, changeUserStatus };
 }
- 

@@ -18,7 +18,7 @@ function ProposalRow({ proposal, index }) {
   const [open, setOpen] = useState(false);
   return (
     <Table.Row>
-      <td>{index + 1}</td>
+      <td>{toPersianNumbers(index + 1)}</td>
       <td>{user.name}</td>
       <td>
         <p>{truncateText(proposal.description, 50)}</p>

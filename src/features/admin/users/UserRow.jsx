@@ -20,7 +20,7 @@ function UserRow({ user, index }) {
   const { status, role } = user;
   return (
     <Table.Row>
-      <td>{index + 1}</td>
+      <td>{toPersianNumbers(index + 1)}</td>
       <td>{user.name}</td>
       <td>{user.email}</td>
       <td>{toPersianNumbers(user.phoneNumber)}</td>

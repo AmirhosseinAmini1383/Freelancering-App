@@ -15,7 +15,7 @@ function ProposalRow({ proposal, index }) {
   const { status, description, duration, price } = proposal;
   return (
     <Table.Row>
-      <td>{index + 1}</td>
+      <td>{toPersianNumbers(index + 1)}</td>
       <td>
         <p>{truncateText(description, 60)}</p>
       </td>

@@ -1,6 +1,9 @@
 import Table from "../../ui/Table";
 import truncateText from "../../utils/truncateText";
-import { toPersianNumbersWithComma } from "../../utils/toPersianNumbers";
+import {
+  toPersianNumbers,
+  toPersianNumbersWithComma,
+} from "../../utils/toPersianNumbers";
 import toLocalDateShort from "../../utils/toLocalDateShort";
 import { HiEye, HiOutlineTrash } from "react-icons/hi";
 import { TbPencilMinus } from "react-icons/tb";
@@ -20,7 +23,7 @@ function ProjectRow({ project, index }) {
 
   return (
     <Table.Row>
-      <td>{index + 1}</td>
+      <td>{toPersianNumbers(index + 1)}</td>
       <td>{truncateText(project.title, 30)}</td>
       <td>{project.category.title}</td>
       <td>{toPersianNumbersWithComma(project.budget)}</td>

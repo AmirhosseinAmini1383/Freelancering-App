@@ -2,7 +2,7 @@ import { MdAssignmentAdd } from "react-icons/md";
 import Table from "../../../ui/Table";
 import truncateText from "../../../utils/truncateText";
 import toLocalDateShort from "../../../utils/toLocalDateShort";
-import { toPersianNumbersWithComma } from "../../../utils/toPersianNumbers";
+import { toPersianNumbers, toPersianNumbersWithComma } from "../../../utils/toPersianNumbers";
 import { useState } from "react";
 import Modal from "../../../ui/Modal";
 import CreateProposal from "../../proposal/CreateProposal";
@@ -24,7 +24,7 @@ function ProjectRow({ project, index }) {
 
   return (
     <Table.Row>
-      <td>{index + 1}</td>
+      <td>{toPersianNumbers(index + 1)}</td>
       <td>{truncateText(title, 30)}</td>
       <td>{toPersianNumbersWithComma(budget)}</td>
       <td>{toLocalDateShort(deadline)}</td>
